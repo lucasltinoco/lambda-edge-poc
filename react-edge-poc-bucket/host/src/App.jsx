@@ -58,8 +58,12 @@ function ErrorBoundary() {
 
 function Home() {
   useEffect(() => {
-    document.cookie = "origin=B";
-    document.location.reload();
+    if (window.location.href.includes("localhost")) {
+      window.location.assign("http://localhost:8282/#/");
+    } else {
+      document.cookie = "origin=B";
+      document.location.reload();
+    }
   }, []);
 
   return <div>Home</div>;

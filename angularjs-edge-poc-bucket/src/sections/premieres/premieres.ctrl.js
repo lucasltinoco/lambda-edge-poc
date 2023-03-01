@@ -10,7 +10,11 @@ angular
         vm.shows = shows;
 
         $scope.init = function () {
-            document.cookie = "origin=A";
-            document.location.reload();
+            if (window.location.href.includes("localhost")) {
+                window.location.assign("http://localhost:8080/#/premieres");
+            } else {
+                document.cookie = "origin=A";
+                document.location.reload();
+            }
         }
     });

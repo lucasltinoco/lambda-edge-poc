@@ -8,4 +8,13 @@ angular
         //Setup view model object
         var vm = this;
         vm.shows = shows;
+
+        $scope.init = function () {
+            if (window.location.href.includes("localhost")) {
+                window.location.assign("http://localhost:8080/#/popular");
+            } else {
+                document.cookie = "origin=A";
+                document.location.reload();
+            }
+        }
     });
