@@ -1,0 +1,104 @@
+.show-frame {
+    background-color: #FFF;
+    position: relative;
+}
+.show-frame h2 {
+    margin: 0;
+    padding: 0 10px;
+    font-size: 18px;
+    background-color: #222;
+    line-height: 40px;
+    color: #CCC;
+}
+.show-frame img {
+    width: 100%;
+    height: 197px;
+}
+.show-frame .date {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.show-frame .inner {
+    padding: 0 10px 10px 10px;
+}
+.show-frame .inner p {
+    padding: 0;
+    margin: 0;
+}
+.show-frame .inner ul.info {
+    list-style: none;
+    border-bottom: dotted 1px #CCC;
+    padding: 0;
+    line-height: 40px;
+}
+.show-frame .inner ul.info li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #CCC;
+}
+.show-frame .inner ul.info li .icon {
+    margin-right: 3px;
+}
+.show-frame .inner ul.info li.rating {
+    color: #d53930;
+}
+.show-frame .inner ul.info li.country {
+    color: #6e480e;
+}
+.show-frame .genres {
+    position: absolute;
+    right: -320px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+    -webkit-transform: rotate(90deg);
+    -webkit-transform-origin: left top 0;
+    overflow: hidden;
+    height: 20px;
+    width: 300px;
+    transition: all .5s linear;
+    -o-transition: all .5s linear;
+    -moz-transition: all .5s linear;
+    -webkit-transition: all .5s linear;
+}
+
+.show-frame .genres li {
+    display: inline-block;
+    line-height: 20px;
+    margin: 0;
+    padding: 0 10px;
+    background-color: rgba(59, 185, 187, 1);
+    color: #FFF;
+}
+.show-frame .buttons {
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+.show-frame .buttons a {
+    width: 120px;
+    position: relative;
+    padding-left: 30px;
+}
+.show-frame .buttons a .icon {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+
+}
+ul.list-of-shows {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.list-of-shows li {
+    margin: 15px 0;
+}
