@@ -39,7 +39,7 @@ gulp.task('usemin', ['inject-templates'], function() {
     return gulp.src('./src/index.html')
         .pipe(usemin({
             css: [minifyCss(), 'concat', rev()],
-            js: [ngAnnotate(), uglify(), rev()],
+            js: [ngAnnotate(), rev()],
             assets: [rev()]
         }))
         .pipe(gulp.dest('build/'));

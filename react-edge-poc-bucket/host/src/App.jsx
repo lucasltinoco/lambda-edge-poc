@@ -7,6 +7,7 @@ import {
   useRouteError,
   Outlet
 } from "react-router-dom";
+import Premieres from "./pages/Premieres";
 
 import "../public/assets/css/style.css";
 
@@ -34,66 +35,55 @@ const App = () => (
       </div>
     </header>
 
-    <section id="site-bar">
-      <div className="container">
-        <h1>"Título"</h1>
-        <p>"Descrição"</p>
-      </div>
-    </section>
-
-    <section id="main">
-      <div className="container">
-        <Outlet />
-      </div>
-    </section>
+    <Outlet />
   </>
 );
 
 function ErrorBoundary() {
   let error = useRouteError();
   console.error(error);
-  // Uncaught ReferenceError: path is not defined
   return <div>Dang!</div>;
 }
 
-function Home() {
-  useEffect(() => {
-    if (window.location.href.includes("localhost")) {
-      window.location.assign("http://localhost:8282/#/");
-    } else {
-      document.cookie = "origin=B";
-      document.location.reload();
-    }
-  }, []);
-
-  return <div>Home</div>;
+function Loading() {
+  return <div>Loading...</div>;
 }
+
+const redirectToAngularJs = (route = "") => {
+  if (window.location.href.includes("localhost")) {
+    window.location.assign(`http://localhost:8282/#/${route}`);
+  } else {
+    document.cookie = "origin=B";
+    window.location.assign(`/#/${route}`);
+    document.location.reload();
+  }
+  return null;
+};
 
 const router = createHashRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorBoundary />,
-    // loader: console.log,
     children: [
       {
         path: "",
-        element: <Home />
+        element: <Loading />,
+        loader: () => redirectToAngularJs()
       },
       {
         path: "premieres",
-        element: <div>Premieres</div>
-        // loader: console.log,
+        element: <Premieres />
       },
       {
         path: "popular",
-        element: <div>Popular</div>
-        // loader: console.log,
+        element: <Loading />,
+        loader: () => redirectToAngularJs("popular")
       },
       {
         path: "search",
-        element: <div>Search</div>
-        // loader: console.log,
+        element: <Loading />,
+        loader: () => redirectToAngularJs("search")
       }
     ]
   }
