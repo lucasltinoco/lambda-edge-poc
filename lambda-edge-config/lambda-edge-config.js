@@ -6,8 +6,8 @@ exports.handler = (event, context, callback) => {
   const origin = request.origin;
 
   //Setup the two different origins
-  const originA = "react-edge-poc-bucket.s3.us-east-2.amazonaws.com";
-  const originB = "angularjs-edge-poc-bucket.s3.us-east-2.amazonaws.com";
+  const originA = "reactjs-lambda-edge-poc.s3.us-east-1.amazonaws.com";
+  const originB = "angularjs-lambda-edge-poc.s3.us-east-1.amazonaws.com";
 
   //Determine whether the user has visited before based on a cookie value
   //Grab the 'origin' cookie if it's been set before
@@ -17,13 +17,13 @@ exports.handler = (event, context, callback) => {
         console.log("Origin A cookie found");
         headers["host"] = [{ key: "host", value: originA }];
         origin.s3.domainName = originA;
-        origin.s3.region = "us-east-2";
+        origin.s3.region = "us-east-1";
         break;
       } else {
         console.log("Origin B cookie found");
         headers["host"] = [{ key: "host", value: originB }];
         origin.s3.domainName = originB;
-        origin.s3.region = "us-east-2";
+        origin.s3.region = "us-east-1";
         break;
       }
     }
@@ -33,11 +33,11 @@ exports.handler = (event, context, callback) => {
     if (Math.random() < 0.5) {
       headers["host"] = [{ key: "host", value: originA }];
       origin.s3.domainName = originA;
-      origin.s3.region = "us-east-2";
+      origin.s3.region = "us-east-1";
     } else {
       headers["host"] = [{ key: "host", value: originB }];
       origin.s3.domainName = originB;
-      origin.s3.region = "us-east-2";
+      origin.s3.region = "us-east-1";
     }
   }
 
